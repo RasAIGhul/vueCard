@@ -1,3 +1,5 @@
+
+
 <template>
   <h1>{{ msg }}</h1>
 
@@ -5,7 +7,7 @@
   <div>
   <div class='buttons'>
     <button id="addToButton" class="buttons" v-on:click="duplicate"> Add Onto </button>
-    <button id="deleteButton" class='buttons'> Delete Last</button>
+    <button id="deleteButton" class='buttons' v-on:click="deleter"> Delete Last</button>
     <button id="changeBackgroundButton" class='buttons' v-on:click="background"> Change Background</button>
     <button id="changeHeadingButton" class='buttons' v-on:click="heading"> Change Heading</button>
     <button data-toggle-button class = 'buttons'  v-on:click="toggleDetails"> Toggle Details </button>
@@ -19,7 +21,7 @@
           <details class ='details'>
             <summary>Details</summary>
             <ul class="information">
-              <p>Hingle McCringleberry is the 2012 Heisman-winning tight end out of Penn State University, selected No. 1 overall by the Rhinos in the 2016 NFL Draft.
+              <p> Hingle McCringleberry is the 2012 Heisman-winning tight end out of Penn State University, selected No. 1 overall by the Rhinos in the 2016 NFL Draft.
               </p>
             </ul>
             </details>
@@ -58,7 +60,7 @@ export default {
     
     duplicate() {
       const clone = document.querySelector('.outsidediv').cloneNode(true);
-       document.body.appendChild(clone);   
+       document.body.appendChild(clone);
     },
 
     background() {
@@ -79,13 +81,17 @@ export default {
     }
     },
 
-    //Kinda borked rn
+//  spent way too much time on this, couldn't get it to work
     deleter(){
-      const elem = document.querySelector('.outsidediv:last-child');
-      elem.remove();
+       
+        const  elem = document.querySelector('.outsidediv');
+        if (document.querySelector('.app') !== document.querySelector('.outsidediv')) {
+          elem.remove();
+        } 
     },
 
     toggleDetails(){
+      const details = document.querySelector('summary');
       if(details.parentNode.getAttribute('open'))
       { 
         details.parentNode.removeAttribute('open')
@@ -94,7 +100,8 @@ export default {
       details.parentNode.setAttribute('open','open');
     }
       }
-    },
+  },
+    
 };
 
 </script>

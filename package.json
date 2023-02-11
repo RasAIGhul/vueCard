@@ -2,6 +2,7 @@
   "name": "vite",
   "version": "0.1.0",
   "scripts": {
+    "start": "vite build --target lib --name dummylib src/main.js --watch --mode development",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
